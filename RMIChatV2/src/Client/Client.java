@@ -49,7 +49,11 @@ public class Client extends UnicastRemoteObject implements InterfaceChatV2Client
         while(!message.equals("quit")) {
         	//envoi de messages au serveur
         	
-        	Serveur.ajoutMessage(message,chatClient);
+        	try {
+        		Serveur.ajoutMessage(message,chatClient);
+        	}catch(Exception e) {
+        		System.out.println("erreur lors de l'envoi du message");
+        	}
         	
         	message=sc.nextLine();
         }
